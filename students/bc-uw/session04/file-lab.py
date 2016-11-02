@@ -10,9 +10,9 @@ with open("file.txt", rb) as source:
 
 with open("students.txt") as students:
           langlist = []
+          students.readline()
           for line in students:
                   langs = line.rsplit(':')[1]
                   langlist.append(langs)
-          strippedlist = [i.strip() for i in langlist]
-          noquotelist = [i.replace("'", "").replace(",", "") for i in strippedlist]
+          strippedlist = [i.strip().replace(',', ' ').replace('and', ' ').split() for i in langlist]
           uniqueset = set(noquotelist)
